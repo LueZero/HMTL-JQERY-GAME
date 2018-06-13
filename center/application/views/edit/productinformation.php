@@ -34,7 +34,7 @@ content="0;url=http://10.11.186.21/center/index.php/Company/Web/index" />';
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <style type="text/css">
 
-body{
+body , h3{
 font-family:Microsoft JhengHei;
 }
 
@@ -43,8 +43,8 @@ font-family:Microsoft JhengHei;
 
 <body style="font-family:Microsoft JhengHei;">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="./backstage">後台管理</a>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #F77171;">
+<a class="navbar-brand" href="./backstage" style="color: black;font-weight:bold;">後台管理</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -52,19 +52,19 @@ font-family:Microsoft JhengHei;
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
   <li class="nav-item ">
-  <a class="nav-link" href="/center/index.php/Company/Web/index">回到前頁<span class="sr-only">(current)</span></a>
+  <a class="nav-link" href="/center/index.php/Company/Web/index" style="color: black;font-weight:bold;">回到前頁<span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="/center/index.php/Company/Web/memberprofile">員工資料</a>
+  <a class="nav-link" href="/center/index.php/Company/Web/memberprofile" style="color: black;font-weight:bold;">員工資料</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="/center/index.php/Company/Web/productinformation">商品資料</a>
+  <a class="nav-link" href="/center/index.php/Company/Web/productinformation" style="color: black;font-weight:bold;">商品資料</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="/center/index.php/Company/Web/editpage">編輯網頁</a>
+  <a class="nav-link" href="/center/index.php/Company/Web/editpage" style="color: black;font-weight:bold;">編輯網頁</a>
   </li>
   <li class="nav-item">
-  <a href="Setmemberprofile?value=logout" class="nav-link " href="#">登出</a>
+  <a href="Setmemberprofile?value=logout" class="nav-link " href="#" style="color: black;font-weight:bold;">登出</a>
   </li>
 </ul>
 </div>
@@ -201,7 +201,7 @@ font-family:Microsoft JhengHei;
 
                       <?php 
 
-                        $query = $this->db->query("SELECT * FROM  business_order");     
+                        $query = $this->db->query("SELECT * FROM  business_order order by order_time desc ");     
                         $con = $this->db->affected_rows();  
                         for($a=0;$a<$con;$a++){
                         $row = $query->unbuffered_row();  
@@ -357,7 +357,7 @@ font-family:Microsoft JhengHei;
           <div class="form-group">
 
 
-            <label for="exampleInputEmail1">商品名稱</label>
+            <label for="exampleInputEmail1"><h3><b>商品名稱</b></h3></label>
             <input type="text" id="name" class="form-control"  aria-describedby="emailHelp" placeholder="輸入您的商品名稱" name="name">
 
 
@@ -368,10 +368,9 @@ font-family:Microsoft JhengHei;
          
             <input type="button" class="btn" style="background-color: #DDD;color:black" onclick="document.getElementById('Upload_File').click()" value="圖片選擇"/>
             <br><br>  
-            <input type="checkbox" id="check_File" value="0"  name="checks"  ><label for="exampleInputEmail1">上傳確認/務必勾選/最多五張
-            <a  id="inputFileAgent" />目前檔案數量:0</a>
-
-            </label>
+            <input type="checkbox" id="check_File" value="0"  name="checks"  ><label for="exampleInputEmail1">上傳圖片/務必勾選/最多五張
+            </label> 
+            <br><a  id="inputFileAgent" />目前檔案數量:0</a>
           
 
           </div> 
@@ -379,52 +378,53 @@ font-family:Microsoft JhengHei;
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">商品內容</label>
+            <label for="exampleInputPassword1"><h3><b>商品內容</b></h3></label>
             <textarea class="form-control" rows="5" id="content" placeholder="輸入您的商品內容" name="content"></textarea>
           </div>
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">商品價格</label>
+            <label for="exampleInputPassword1"><h3><b>商品價格</b></h3></label>
             <input type="text" class="form-control" id="price" placeholder="輸入您的商品價格" name="price">
           </div>
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">商品數量 </label>
+            <label for="exampleInputPassword1"><h3><b>商品數量</b></h3></label>
             <input type="text" class="form-control" id="quantity" placeholder="輸入您的商品數量" name="quantity">
           </div>
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">商品尺寸 </label>
+            <label for="exampleInputPassword1"><h3><b>商品尺寸</b></h3></label>
             <input type="text" class="form-control" id="size" placeholder="輸入您的商品尺寸" name="size">
           </div>
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">商品單位 </label>
+            <label for="exampleInputPassword1"><h3><b>商品單位</b></h3></label>
             <input type="text" class="form-control" id="unit" placeholder="輸入您的商品單位" name="unit">
           </div>
 
 
           <div class="form-group">
-            <label for="exampleInputPassword1">選擇商品分類</label>
-            <select multiple class="form-control" id="exampleSelect2" name="class_name">
+            <label for="exampleInputPassword1"><h3><b>選擇商品分類</b></h3></label>
+            <select class="form-control" id="exampleSelect2" name="class_name">
               <?php
 
               $this->load->database(); 
               $query = $this->db->query("SELECT * FROM business_classification");
               foreach ($query->result() as $row){
+
               echo  '<option>'.$row->classification_title.'</option>';
               }
 
               ?>
             </select>
-            <small id="emailHelp" class="form-text text-muted">如空白，請先在下方新增</small>
+            <small id="emailHelp" class="form-text text-muted" style="text-decoration:underline;">如空白，請先在下方新增</small>
          </div>
 
-      <button type="submit"  class="btn btn-primary" onclick="return mycheck()">新增</button>
+      <button type="submit"  class="btn btn-primary" onclick="return mycheck()" style="float: right;">建立商品</button>
 
       </form>
 
@@ -436,13 +436,13 @@ font-family:Microsoft JhengHei;
       <form style="padding: 10px;" action="setproductinformation?value=insertclass" method="post">
          <h4></h4>
           <div class="form-group">
-            <label for="exampleInputEmail1">新增分類</label>
+            <label for="exampleInputEmail1"><h3><b>新建分類</b></h3></label>
             <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="輸入類別" name="class_name">
-            <small id="emailHelp" class="form-text text-muted">新增一項分類</small>
+            <small id="emailHelp" class="form-text text-muted" style="text-decoration:underline;">新增一項分類</small>
           </div>
-          <button type="submit" class="btn btn-primary" >新增</button>
+          <button type="submit" class="btn btn-primary" style="float: right;" >新增分類</button>
       </form>
-
+      <br><br><br>
 
 
 </div>

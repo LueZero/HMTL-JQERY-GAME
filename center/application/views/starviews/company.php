@@ -51,10 +51,10 @@ $row = $query->row_array();
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
-<script src="/center/class/WebSocket-Node-master/lib/WebSocketServer.js"></script>
+<!--<script src="/center/class/WebSocket-Node-master/lib/WebSocketServer.js"></script>
 
+<script src="/center/ratchet-v2.0.2/js/ratchet.js"></script>-->
 
-<!--<script src="/center/ratchet-v2.0.2/js/ratchet.js"></script>-->
 </head>
 <style type="text/css">
 .insw{
@@ -129,40 +129,52 @@ font-family:Microsoft JhengHei;
 
 
 
-
 #outbox{
 width:100%; 
 max-width: 100%;
-padding: 30px;
+padding:50px;
 }
 .content_box{
+
 cursor:pointer;
 position: relative;
 left: 10%;
-width:480px;
+width:500px;
 max-width: 100%;
-height: 100%;
+height: auto;
 float: left;
 font-size:1em;
 border: 5px solid  #F77171;
-margin: -30px 100px 100px 0px;
+margin: -20px 140px 50px 0px;
 padding: 10px;
 line-height: 1em;
-letter-spacing:1px;
+letter-spacing:3px;
 color:#353535;
--webkit-border-radius: 50px;
+-webkit-border-radius: 10px;
 -moz-border-radius: 50px;
 float: left;
+box-shadow:20px 14px 10px rgba(20%,20%,10%,0.5);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1271px) {
 .content_box{ 
-position: relative;
-left: 0%;
-   
-}
+  position: relative;
+  left: 0%;
+  top:-50px;
+  width:100%;
+  padding: 20px;
+  margin: 30px 0px 10px 0px;
+  padding: 20px 20px 10px 10px; 
 }
 
+}
+
+@media only screen and (max-width: 500px) {
+#outbox{
+padding:40px ;
+}
+
+}
 
 
 .commodity_img{
@@ -170,15 +182,16 @@ border: 0.5px solid  #ddd;
 width: 30%;
 max-width: 100%;
 height: 100%;
-margin: 10px 0px 0px 15%;
-line-height: 2em;
-padding: 10px;
+margin: 0px 0px 0px 12%;
+line-height: 1em;
+padding: 6px;
 float: left;
 
 }
 
 .commodity_img:hover{
-background-color: red;
+
+background-color:  #ddd;
 transform:rotate(3deg);
 }
 
@@ -198,7 +211,7 @@ word-break: break-all;
 
 .message{
  	width: 100%;
-    height: 290px;
+    height: 90px;
     overflow: auto;
 
 }
@@ -206,7 +219,7 @@ word-break: break-all;
 
 <body style="font-family:Microsoft JhengHei;">
    
-<nav class="navbar navbar-default">
+<nav class="navbar  navbar-default" style="background-color: #F77171;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button"  class="navbar-toggle " data-toggle="collapse" data-target="#myNavbar" >
@@ -214,8 +227,9 @@ word-break: break-all;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="http://10.11.186.21/center/index.php/Company/Web/" style="color: black">
+      <a class="navbar-brand" href="http://10.11.186.21/center/index.php/Company/Web/" style="color: black;font-weight:bold;">
 			<?php
+
 				echo $row['company'];
 			?>
 	  </a>
@@ -224,23 +238,24 @@ word-break: break-all;
 
     <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
+            <li><a data-toggle="tab" href="#menu1"  style="color:black;font-weight:bold;">群眾聊天室</a></li>
+            <li><a data-toggle="tab" href="#home"   style="color:black;font-weight:bold;" >商品專區</a></li>
+     
 
-            <li><a data-toggle="tab" href="#menu1">群眾聊天室</a></li>
-            <li><a data-toggle="tab" href="#home">商品專區</a></li>
-      
+
 			<?php if(  base64_decode($_COOKIE["office_id"]) == null  ){ ?>	
-			<li><a data-toggle="tab" href="#menu5">會員專區</a></li>
+			<li><a data-toggle="tab" href="#menu5"  style="color:black;font-weight:bold;">會員專區</a></li>
 			<?php } ?>
 
 			<?php if(  base64_decode($_COOKIE["customer_id"]) == null  && base64_decode($_COOKIE["office_authority"]) != 1128){ ?>	
 
-			<li><a data-toggle="tab" href="#menu3">管理</a></li>
+			<li><a data-toggle="tab" href="#menu3"  style="color:black;font-weight:bold;">管理</a></li>
 
 			<?php } ?>
 
 			<?php if( base64_decode($_COOKIE["office_authority"]) == 1128 ){ ?>
 			<li>
-			<a href="backstage">編輯區</a>
+			<a href="backstage"  style="color:black;font-weight:bold;">編輯區</a>
 			<li>
 
 			<?php } ?>
@@ -248,7 +263,7 @@ word-break: break-all;
 			<li class="nav-item">
 
 			<?php if( base64_decode($_COOKIE["office_authority"]) == 1128  ){ ?>	
-			<a href="Setmemberprofile?value=logout" class="nav-link disabled" href="#">
+			<a href="Setmemberprofile?value=logout" class="nav-link disabled" href="#"  style="color:black;font-weight:bold;">
 			管理員/登出
 			</a>
 			<?php } ?>
@@ -267,7 +282,7 @@ word-break: break-all;
 			if( base64_decode( $_COOKIE["customer_id"]) == $customer_id &&  $customer_id != null){ 
 
 			?>	
-			<a href="Setuserfile?value=Client_logoout" class="nav-link disabled" href="#">
+			<a href="Setuserfile?value=Client_logoout" class="nav-link disabled" href="#"  style="color:black;font-weight:bold;">
 
 			<?php echo $row['customer_name'];?>
 
@@ -313,18 +328,18 @@ word-break: break-all;
 
 
 
-<div id="menu1" class="tab-pane fade in active">
+<div id="menu1" class="tab-pane fade ">
 
 <div class="container " >
 <h3><b>聊天室:</b></h3>
 
 
 
-<button id="a" onclick="check(this)" value="<i class='em em-smile'/></i>"		   class="btn"><i class="em em-smile " /></i></button>
+<button id="a" onclick="check(this)" value="<i class='em em-smile'/></i>"		       class="btn"><i class="em em-smile " /></i></button>
 <button id="b" onclick="check(this)" value="<i class='em em-expressionless'/></i>" class="btn"><i class="em em-expressionless" /></i></button>
-<button id="c" onclick="check(this)" value="<i class='em em-angry'/></i>" 		   class="btn"><i class="em em-angry" /></i></button>
-<button id="d" onclick="check(this)" value="<i class='em em-cry'/></i>" 		   class="btn"><i class="em em-cry" /></i></button>
-<button id="e" onclick="check(this)" value="<i class='em em-blush'/></i>" 		   class="btn"><i class="em em-blush" /></i></button>
+<button id="c" onclick="check(this)" value="<i class='em em-angry'/></i>" 		     class="btn"><i class="em em-angry" /></i></button>
+<button id="d" onclick="check(this)" value="<i class='em em-cry'/></i>" 		       class="btn"><i class="em em-cry" /></i></button>
+<button id="e" onclick="check(this)" value="<i class='em em-blush'/></i>" 		     class="btn"><i class="em em-blush" /></i></button>
 <button id="f" onclick="check(this)" value="<i class='em em-broken_heart'/></i>"   class="btn"><i class="em em-broken_heart" /></i></button>
 
 <br><br>
@@ -342,16 +357,11 @@ word-break: break-all;
 </div>
 
 </div>
-</div>
+
 
 
 
 <script type="text/javascript">
-
-
-
-
-
 
 
 var emoji = ['10',"455"] ;
@@ -362,14 +372,14 @@ function check(obj) {
 
 	  var id = [obj.id];		
 	  var p = [obj.value];
-	  $("#"+id).css("background-color","#123");		
+	  $("#"+id).css("background-color","#F77171");		
 	  emoji.push(p);
 	  return false;
 
 	}else{
 
-	  alert('表情頭貼已確認，想重選請重新整理畫面');
-
+	  alert('表情頭貼已確認，重新幫您整理畫面');
+	  location.href = "http://10.11.186.21/center/index.php/Company/Web/index";
 	}
 
 
@@ -445,11 +455,137 @@ function monitor(){
 
 setInterval( "monitor()",60000);
 //每1秒監聽狀況	
-
-
-
-
 </script>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<div class="container " >
+
+  <div>
+  	<h3><b>小傑機器人聊天室:</b></h3>
+      
+      <div class="message" id="message"><p id="ans"><p>   <div id="dialogBox" > <b>機器人: 您好，我的朋友,需要甚麼幫忙?</b><BR/></div></div>
+      
+   <!-- 按 enter 時呼叫 keyin() 回答 --> 
+   <p contentEditable="true" id="say" name="say"  value=""  onkeydown="keyin(event)" style="width:100%;height:6em;background-color: #ddd;" id="aaa"/></p>
+   <br>
+
+   <input type="submit" value="送出" onclick="say()"  class="btn" style="background-color: #ddd;float: right;"/> <!-- 當送出按鈕按下，就呼叫 say() 函數回答 --> 
+  </div>
+
+
+  
+</div>
+<script type="text/javascript">  
+
+var qaList = [
+
+{ Q:"商品",    			A:"商品在這裡:http://10.11.186.21/center/index.php/Company/Web/index"},
+{ Q:"你好",    			A:"你好? | 我不好哈哈"},
+{ Q:"為什麼",   			A:"因為我孤單寂寞 | 等你很久了哈哈"},
+{ Q:"怎麼稱呼你",  	    A:"我是機器人小傑"},
+{ Q:"在幹嘛",   			A:"在跟你聊天"},
+{ Q:"你知道我是誰嗎", 	A:"人"},
+{ Q:"AI",   			A:"你知道AI趨勢嗎"},
+{ Q:"這裡有什麼",   		A:"有許多精美商品"},
+{ Q:"你能做什麼",		A:"與你溝通?"},
+{ Q:"", 			    A:"可否多告訴我一些呢?"}
+];  
+  
+    function random(n) { // 從 0 到 n-1 中選一個亂數
+      return Math.floor(Math.random()*n);
+    }
+    
+    function say() { //當送出鍵按下時，會呼叫這個函數進行回答動作
+      				 //append(document.getElementById("say").value); // 先將使用者輸入的問句放到「對話區」顯示。
+      answer();      //然後回答使用者的問題。
+
+    }
+    
+    function keyin(event) { // 當按下 enter 鍵時，會呼叫此函數進行回答
+
+      var keyCode = event.which; // 取出按下的鍵
+      if (keyCode == 13) say(); // 如果是換行字元 \n ，就進行回答動作。
+
+    }
+    
+    function append(line) { // 將 line 放到「對話區」顯示。
+
+
+  
+      $("#ans").prepend(  "<br><b>" + line + "</b><br>"  ); // 加入 line 這行文字，並加入換行 <BR/>\n
+ 
+    }
+
+
+    function answer() { // 回答問題
+
+      setTimeout( function () { // 停頓 1 到 3 秒再回答問題 (因為若回答太快就不像人了，人打字需要時間)
+
+        append( "機器人: " +  getAnswer()  );
+
+      }, 1000 + random(2000) );
+
+    }
+    
+    function getAnswer() {
+
+      var say = document.getElementById("say").innerText; // 取得使用者輸入的問句。
+
+      for (var i in qaList) { // 對於每一個 QA 
+
+       try {
+        var qa = qaList[i];
+        var qList = qa.Q.split("|"); // 取出 Q 部分，分割成一個一個的問題字串 q
+        var aList = qa.A.split("|"); // 取出回答 A 部分，分割成一個一個的回答字串 q
+        for (var qi in qList) { // 對於每個問題字串 q
+          var q = qList[qi];
+          if (q=="") // 如果是最後一個「空字串」的話，那就不用比對，直接任選一個回答。
+            return aList[random(aList.length)]; // 那就從答案中任選一個回答
+
+          var r = new RegExp("(.*)"+q+"([^?.;]*)", "gi"); // 建立正規表達式 (.*) q ([^?.;]*)
+          if ( say.match(r) ) { // 比對成功的話
+
+            tail = RegExp.$2; // 就取出句尾
+            // 將問句句尾的「我」改成「你」，「你」改成「我」。
+
+            tail = tail.replace("我", "#").replace("你", "我").replace("#", "你");
+            return aList[ random(aList.length)].replace(/\*/, tail) ; // 然後將 * 改為句尾進行回答
+          }
+        }
+       } catch (err) {}
+
+
+      }
+      return "然後呢？"; // 如果發生任何錯誤，就回答「然後呢？」來混過去。
+    }   
+  </script>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -470,30 +606,35 @@ setInterval( "monitor()",60000);
 
 
 <!--商品呈現-->
-<div id="home" class="tab-pane fade ">
+<div id="home" class="tab-pane fade in active">
 
-
-<div id="outbox" style="position: relative;top:-40px;">
+<div class="container">
+<div id="outbox" style="position: relative;top:-30px;">
 <form action="index" method="GET">
 <div class="input-group">
-<input type="text" class="form-control" placeholder="輸入您想搜尋商品"  aria-describedby="basic-addon1" name="value">
+<input type="text" class="form-control" placeholder="輸入您想搜尋商品"   name="value" id="name" style="border-color:#F77171;border-width:2px;">
 <div class="input-group-btn">
 <button class="btn btn-default" type="submit" style="background-color: #F77171;color:white;">搜尋</button>
 </div>
 </div>
 </form>	
 </div>
-	
+</div>
+
+
+
 
 
 <?php
 
-$key = htmlspecialchars($_GET['value']);
+$key = htmlspecialchars( $this->input->get('value') );
 
 if( $key == null ){ 
+
 $query = $this->db->get('business_commodity');
 foreach ($query->result() as $row){
 $cids = $row->commodity_id;
+
 ?>	    
 
 <div class="content_box">
@@ -501,16 +642,15 @@ $cids = $row->commodity_id;
 <div class="container">
 <h4 style="font-family:Microsoft JhengHei;"><b><?php echo $sname =  $row->commodity_name; ?></b></h4>
 
-<p>NT$:<?php echo $row->commodity_price?>元/<?php echo $row->commodity_unit?>/<?php echo $row->commodity_size?></p>
+<p>NT$:<?php echo $row->commodity_price?>元/<?php echo $row->commodity_unit?></p>
 <hr style="border:none;border-top:1px solid black;">
 <p>分類:<?php echo $row->commodity_classification?></p>
-<p>喜歡:<?php echo $row->commodity_like_number?></p>
+<p><i class="em em-heart"></i>：<?php echo $row->commodity_like_number?></p>
 
 
+<a  href="shop?value=<?php echo $row->commodity_id;?>"><button type="button" class="btn btn-danger" id="shop"><i class="em em-shopping_trolley" ></i>購買</button></a>
 
-
-<a  href="shop?value=<?php echo $row->commodity_id;?>"><button type="button" class="btn btn-danger" id="shop">購買</button></a>
-<a  href="Setproductinformation?value=like&cid=<?php echo $cids;?>"><button type="button" class="btn btn-danger" id="shop">給我一個喜歡</button></a>
+<a  href="Setproductinformation?value=like&cid=<?php echo $cids;?>"><button type="button" class="btn btn-danger"><i class="em em-heart_decoration"></i>喜歡</button></a>
 
 
 
@@ -545,10 +685,17 @@ foreach ($query->result() as $row){
 
 <?php
 
+$this->db->flush_cache();
 $this->db->like('commodity_name', $key); 
 $this->db->or_like('commodity_keywords',  $key); 
 $this->db->from('business_commodity');
 $query = $this->db->get();
+
+if ($query->num_rows() == 0){
+echo "<script>alert('無資料')</script>";
+return;
+}	
+
 foreach ($query->result() as $row){
 
 ?>
@@ -556,16 +703,15 @@ foreach ($query->result() as $row){
 <div class="content_box">
 <div class="container">
 <h4 style="font-family:Microsoft JhengHei;"><b><?php echo $sname =  $row->commodity_name; ?></b></h4>
-<p>NT$:<?php echo $row->commodity_price?>元/<?php echo $row->commodity_unit?>/<?php echo $row->commodity_size?></p>
+<p>NT$:<?php echo $row->commodity_price?>元/<?php echo $row->commodity_unit?></p>
 <hr style="border:none;border-top:1px solid black;	">
-<p>類別:	<?php echo $row->commodity_classification?></p>
-<p>喜歡:<?php echo $row->commodity_like_number?></p>
+<p>分類:	<?php echo $row->commodity_classification?></p>
+<p><i class="em em-heart"></i>：<?php echo $row->commodity_like_number?></p>
 
 
+<a  href="shop?value=<?php echo $row->commodity_id;?>"><button type="button" class="btn btn-danger" id="shop"><i class="em em-shopping_trolley" ></i>購買</button></a>
 
-
-<a  href="shop?value=<?php echo $row->commodity_id;?>" ><button type="button" class="btn btn-danger" id="shop">購買</button></a>
-<a  href="Setproductinformation?value=like"><button type="button" class="btn btn-danger" id="shop">給我一個喜歡</button></a>
+<a  href="Setproductinformation?value=like&cid=<?php echo $cids;?>"><button type="button" class="btn btn-danger"><i class="em em-heart_decoration"></i>喜歡</button></a>
 
 
 <br><br>
@@ -585,14 +731,14 @@ $query = $this->db->get();
 foreach ($query->result() as $row){
 ?>
 <img src=http://10.11.186.21/center/file/<?php echo $row->commodity_imgs;?> id="images" class="commodity_img" onclick="s()">
-<?php }  ?>
+<?php  }  ?>
 
 
 
 </div>
 <?php }	 ?>
 </div>	
-<?php }	 ?>
+<?php }  	 ?>
 
 
 
@@ -607,12 +753,12 @@ foreach ($query->result() as $row){
 <div class="container">
 		<div class="form-group">
 		<label for="exampleInputEmail1">帳號</label>
-		<input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Id" name="id">
-		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		<input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Id" name="id" style="border-color:#F77171;border-width:2px;">
+		<small id="emailHelp" class="form-text text-muted">後台專區</small>
 		</div>
 		<div class="form-group">
 		<label for="exampleInputPassword1">密碼</label>
-		<input type="password" class="form-control"  placeholder="Enter Password"  name="pw">
+		<input type="password" class="form-control"  placeholder="Enter Password"  name="pw" style="border-color:#F77171;border-width:2px;">
 		</div>
 		<div class="form-check">
 		</div>
@@ -663,7 +809,7 @@ foreach ($query->result() as $row){
 			 <form action="./Setuserfile?value=insertdate" method="POST" >
 			  <div class="form-group">
 				<label for="exampleInputPassword1">您的姓名</label>
-				<input type="text" class="form-control"   name="name" id="name"> 
+				<input type="text" class="form-control"   name="name" id="names"> 
 			  </div>
 			  <div class="form-group">
 				<label for="exampleInputEmail1">申辦帳號</label>
@@ -741,7 +887,7 @@ foreach ($query->result() as $row){
 				<a>訂購數量:<?php   	    echo $row->order_quantity.'<br>'; ?></a> 
 				<a>訂購金額NT$:<?php     echo $row->order_total.'元<br>'; ?></a> 
 				<a>商品狀態:<?php     echo $row->order_status.'<br>'; ?></a> 
-			
+			  <a href="Setproductinformation?value=ccancel_order&cid=<?php    echo $row->orders_no; ?>">取消訂單</a> 
 				<hr style="border:none;border-top:1px dashed #0066CC;">
 				<?php   }      ?>	 
 
@@ -792,6 +938,24 @@ foreach ($query->result() as $row){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 function noid(){
 alert('帳號無法修改');
@@ -811,15 +975,11 @@ alert('帳號無法修改');
 
 
 
-
-
-
-
 <script type="text/javascript">
 
 function inser(){
 
-	var name = document.getElementById('name').value,
+	var name = document.getElementById('names').value,
 	id   = document.getElementById('id').value,	
 	pw   = document.getElementById('pw').value;
 
@@ -886,5 +1046,19 @@ alert('歡迎光臨,正在驗證資料中..');
 }
 </script>	
 </div>
+
+
+
+
+
+<br>
+
+<div  style="float: left; background-color: #F77171;width: 100%;height: 100px;color:black">
+  <div class="container" style="position: relative;top:15%;">
+ @2018 Luezero 測試製作 | PHP&MYSQL | Codeigniter框架 | Bootstrap4框架
+  </div>
+</div>
+
+
 </body>
 </html>

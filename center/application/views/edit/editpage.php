@@ -33,27 +33,27 @@
 </style>
 </head>
 <body style="font-family:Microsoft JhengHei;">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="./backstage">後台管理</a>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #F77171;">
+<a class="navbar-brand" href="./backstage" style="color: black;font-weight:bold;">後台管理</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/center/index.php/Company/Web/index">回到前頁<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/center/index.php/Company/Web/index" style="color: black;font-weight:bold;">回到前頁<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/center/index.php/Company/Web/memberprofile">員工資料</a>
+          <a class="nav-link" href="/center/index.php/Company/Web/memberprofile" style="color: black;font-weight:bold;">員工資料</a>
       </li>
          <li class="nav-item">
-       <a class="nav-link" href="/center/index.php/Company/Web/productinformation">商品資料</a>
+       <a class="nav-link" href="/center/index.php/Company/Web/productinformation" style="color: black;font-weight:bold;">商品資料</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link " href="/center/index.php/Company/Web/editpage">編輯網頁</a>
+      <a class="nav-link " href="/center/index.php/Company/Web/editpage" style="color: black;font-weight:bold;">編輯網頁</a>
       </li>
 	  <li class="nav-item">
-        <a href="Setmemberprofile?value=logout" class="nav-link " href="#">登出</a>
+        <a href="Setmemberprofile?value=logout" class="nav-link " href="#" style="color: black;font-weight:bold;">登出</a>
       </li>
     </ul>
   </div>

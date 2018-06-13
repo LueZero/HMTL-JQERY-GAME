@@ -585,6 +585,76 @@ class Setproductinformation extends CI_Model{
 
 
 
+            //取消訂單
+            public function  ccancel_order(){
+
+
+
+               $this->load->database();  
+
+               $cid =  $this->input->get('cid');
+
+               $query = $this->db->where('orders_no',$cid)->get('business_order');
+
+                 if ($query->num_rows() > 0){
+
+                          $row = $query->row();
+                         
+                  if(    $row->order_status == "完成交易"     ){
+
+      
+                      echo  "<script>alert('無法取消')</script>";
+                      echo '<meta http-equiv="refresh" content="0;url=http://10.11.186.21/center/index.php/Company/Web/index">';
+                      $this->db->close();
+                      return;
+
+
+                  }else{
+
+                     $this->db->where('orders_no',  $cid );
+                     $this->db->delete('business_order'); 
+                      echo  "<script>alert('取消成功')</script>";
+                      echo '<meta http-equiv="refresh" content="0;url=http://10.11.186.21/center/index.php/Company/Web/index">';
+                          $this->db->close();
+                      return;
+
+
+                  }
+
+
+              
+
+  
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -647,6 +717,14 @@ class Setproductinformation extends CI_Model{
  
 
           } 
+
+
+
+
+
+
+
+
 
 
 
@@ -890,15 +968,23 @@ class Setproductinformation extends CI_Model{
 
         exit;
 
+      }elseif( $_GET['value'] == 'ccancel_order'){
+
+
+        $Setproductinformation = new Setproductinformation;
+
+        $Setproductinformation->ccancel_order();
+
+        return;
+
+
+
       }else{
 
 
-
-      echo '無使用權限請登入後再使用';
-      echo '<meta http-equiv="refresh" content="3;url=http://10.11.186.21/center/index.php/Company/Web/"/>'; 
-      exit;
-
-
+        echo '無使用權限請登入後再使用';
+        echo '<meta http-equiv="refresh" content="3;url=http://10.11.186.21/center/index.php/Company/Web/"/>'; 
+        exit;
 
       }
 

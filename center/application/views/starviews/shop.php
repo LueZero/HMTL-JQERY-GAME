@@ -102,11 +102,13 @@ body,h1,h2{
 
 .commodity_img{
 border: 0.5px solid  #ddd;
-width: 30%;
+width: 450px;
 height: 100%;
 padding: 50px;
 max-width: 100%;
-margin: 10px 0px 0px 15%;
+margin:0 auto;
+margin: 0px  100px 40px;
+margin-left:auto ;
 line-height: 2em;
 padding: 10px;
 float: left;
@@ -132,7 +134,7 @@ transform:rotate(3deg);
         <span class="icon-bar"></span> 
       </button>
 
-      <a class="navbar-brand" href="http://10.11.186.21/center/index.php/Company/Web" style="color: black">
+      <a class="navbar-brand" href="http://10.11.186.21/center/index.php/Company/Web/index" style="color: black">
 
 			<?php
 
@@ -167,6 +169,10 @@ transform:rotate(3deg);
     </div>
   </div>
 </nav>
+
+
+
+
 
 
 
@@ -307,6 +313,14 @@ $row = $query->row_array();
 
   <br>
   </div>
+
+
+
+
+
+
+
+
 
 </div>
 </div>

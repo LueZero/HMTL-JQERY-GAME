@@ -243,7 +243,16 @@ class Enterdata extends CI_Model{
 
 
 
+			 		//聊天室	
+				$sql = "CREATE TABLE message_board(
+					
+							no INT(13) UNSIGNED AUTO_INCREMENT PRIMARY KEY , /*編號*/
+							emjjo 		text , 	/*表情*/ 
+							message		text ,  /*商品編號*/
+						
+							)";				
 
+			 	$this->db->query($sql);	
 
 
 
@@ -387,15 +396,22 @@ class Enterdata extends CI_Model{
 
 
 
-					echo  '<script>alert("設定喜歡資料..")</script>';			
+					echo  '<script>alert("設定喜歡資料")</script>';			
 
 
 
-					}elseif $table == "business_like"){
+					}elseif ($table == "business_like"){
 
+
+					echo  '<script>alert("設定聊天室資料")</script>';		
+					
+
+					}elseif ($table == "message_board"){
 
 						echo  '<script>alert("設定完成..")</script>';		
 						echo '<meta http-equiv="refresh" content="0;url=http://10.11.186.21/center/index.php/Company/Web/index"/>'; 
+
+
 
 					}
 				

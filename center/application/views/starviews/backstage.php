@@ -1,17 +1,13 @@
 <?php	
 defined('BASEPATH') OR exit('No direct script access allowed'); 
+error_reporting(0);
 
-@$id = base64_decode($_COOKIE['office_id']);
-
-
-if( preg_match("/[ '.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/" , $id  )   ){ 
-          
-echo'請勿使用特殊符號..';
-      
-exit;
-}
+$id = base64_decode($_COOKIE['office_id']);
 
 
+if( preg_match("/[ '.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/" , $id  )   ){ echo'請勿使用特殊符號..'; exit; }
+
+ 
 echo  @$id  != null  ?  "" : '<script>alert("請登入")</script><meta http-equiv="refresh" content="0;url=http://10.11.186.21/center/index.php/Company/Web/index" />'; 
 ?>
 
@@ -41,7 +37,17 @@ echo  @$id  != null  ?  "" : '<script>alert("請登入")</script><meta http-equi
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <style type="text/css">
+body{
+
+font-weight:bold;
+  font-family:Microsoft JhengHei;
+}
+
+
+
 .iex::before{
   border: 10px solid transparent;
   border-left: 10px solid #f00;
@@ -168,31 +174,54 @@ echo  @$id  != null  ?  "" : '<script>alert("請登入")</script><meta http-equi
 </style>
 </head>
 <body style="font-family:Microsoft JhengHei;" >
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="./backstage">後台管理</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F77171;">
+  <a class="navbar-brand" href="./backstage"  style="color: black;font-weight:bold;">後台管理</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="/center/index.php/Company/Web/index" id="iex">回到首頁<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/center/index.php/Company/Web/index" id="iex" style="color: black;font-weight:bold;">回到首頁<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/center/index.php/Company/Web/memberprofile" id="iex2">員工資料</a>
+        <a class="nav-link" href="/center/index.php/Company/Web/memberprofile" id="iex2" style="color: black;font-weight:bold;">員工資料</a>
       </li>
          <li class="nav-item">
-        <a class="nav-link" href="/center/index.php/Company/Web/productinformation" id="iex3">商品資料</a>
+        <a class="nav-link" href="/center/index.php/Company/Web/productinformation" id="iex3" style="color: black;font-weight:bold;">商品資料</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="/center/index.php/Company/Web/editpage" id="iex4">編輯網頁</a>
+        <a class="nav-link " href="/center/index.php/Company/Web/editpage" id="iex4" style="color: black;font-weight:bold;">編輯網頁</a>
       </li>
 	  <li class="nav-item">
-        <a href="Setmemberprofile?value=logout" class="nav-link " href="#">登出</a>
+        <a href="Setmemberprofile?value=logout" class="nav-link " href="#" style="color: black;font-weight:bold;">登出</a>
       </li>
     </ul>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container">
 <div class="panel"style="display: none;">回到完整首頁，觀看您你的網頁完整樣子<br><br><span class="x" "><button  class="btn btn-success" style="text-shadow: 2px 2px 3px #434a54;">下一步</button></span> </div>
@@ -200,15 +229,171 @@ echo  @$id  != null  ?  "" : '<script>alert("請登入")</script><meta http-equi
 <div class="pane3"style="display: none;">商品資料頁面，讓你輕鬆編輯商品資料<br><br><span class="x3"><button  class="btn btn-success"  style="text-shadow: 2px 2px 3px #434a54;">下一步</button></span> </div>
 <div class="pane4"style="display: none;">編輯網頁資料頁面，讓你輕鬆編輯網頁內容<br><br><span class="x4"><button  class="btn btn-success" style="text-shadow: 2px 2px 3px #434a54;">開始使用</button></span> </div>
   </div>
+
+<?php
+
+
+$a =  $this->db->count_all('business_commodity');
+$c =  $this->db->count_all('business_sales');
+$d =  $this->db->count_all('customer_users');
+$e =  $this->db->count_all('business_order');
+$query = $this->db->select_sum('commodity_like_number')->get('business_commodity');
+
+    foreach ($query->result() as $row){
+
+     
+      $b =   $row->commodity_like_number;
+
+
+    }
+
+
+?>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.  ***原始資料***
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+
+          ['商品數量', <?php echo $a;?>],
+          ['喜歡數'  , <?php echo $b;?>],
+          ['購買數量', <?php echo $c;?>],
+          ['會員人數', <?php echo $d;?>],
+          ['訂單數'  , <?php echo $e;?>]
+          //['Zucchini', 1],
+          //['Pepperoni', 1]
+
+        ]);
+
+        
+
+        // ************差異之處****************
+        // Set chart options
+        var options = {
+                       'title':'商品分析圓餅圖',
+                       'width':360,
+                       'height':300
+                      };
+
+        
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart( document.getElementById('chart_div') );
+        chart.draw( data , options );
+      }
+
+
+    </script>
+
+
+
+
+
+
+<div id="chart_div" >
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+
+
+function report(){
+
+$ci =& get_instance();
+
+$query = $ci->db->select_sum( 'commodity_like_number' )->get( 'business_commodity' );
+
+    foreach ( $query->result() as $row ){
+
+      $row->commodity_like_number;
+
+    }
+
+
+}
+
+report();
+
+
+?>
 <div class="container">
-<p class="text-lowercase">歡迎進入簡易ERP後台管理</p>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="/center/imges/test.jpg" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+<?php  echo '<a>商品總量:</a>'.$a.'樣</br>';?>
+<?php  echo '<a>會員人數:</a>'.$d.'位</br>';?>
+<?php  echo '<a>交易成功:</a>'.$c.'件</br>';?>
+<?php  echo '<a>目前訂單數:</a>'.$e.'件</br>';?>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -288,8 +473,20 @@ $(".x4").click(function(){
 
 
 
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>

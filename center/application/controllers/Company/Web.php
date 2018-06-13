@@ -45,7 +45,7 @@ class Web extends CI_Controller {
 			public function backstage(){
 			
 			
-
+			$this->load->database();		
 			$this->load->view('starviews/backstage');
 							   
 							   
