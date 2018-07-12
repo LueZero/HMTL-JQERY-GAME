@@ -1,0 +1,823 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<head>
+<title>腦殘遊戲 | 2018©Lue_Zero</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"> 
+<meta property="og:type" 	     content="website">
+<meta property="og:title"	     content="腦殘遊戲|Lue_Zero">
+<meta property="og:site_name"    content="Lue_Zero">
+<meta property="og:description"  content="這就是一款腦殘遊戲">
+<meta property="og:url" 		 content="https://zerasda.000webhostapp.com/TestProject/web/game">
+<meta property="og:image:width"  content="200">
+<meta property="og:image:height" content="200">
+<meta property="og:image" content="https://zerasda.000webhostapp.com/image/z.jpg">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet"  type="text/css"   href="/tool/css/bootstrap.css">
+<link rel="stylesheet"  type="text/css"   href="/tool/css/bootstrap-grid.css">		
+<link rel="stylesheet"  type="text/css"   href="/tool/css/bootstrap-grid.min.css">
+<link rel="stylesheet"  type="text/css"   href="/tool/css/bootstrap-reboot.css">
+<link rel="stylesheet"  type="text/css"   href="/tool/css/bootstrap-reboot.min.css">
+<link rel="stylesheet"  href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"  href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<script src="/tool/js/JQERY/jquery3.3.1.min.js"></script>
+<script src="/tool/js/bootstrap3.3.7.min.js"></script>
+<script src="/tool/js/bootstrap.bundle.js"></script>
+<script src="/tool/js/bootstrap.bundle.min.js"></script>
+<script src="/tool/js/bootstrap.js"></script>
+<script src="/tool/js/bootstrap.min.js"></script>
+<script src="/tool/js/bootstrap3.3.7.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+
+body.modal-open {
+    position: fixed;
+    width: 100%;
+}
+
+
+
+
+
+
+h1,h2,h3,h4{
+
+	font-family:Microsoft JhengHei;
+}
+
+
+
+
+
+
+
+
+.card{
+width: 360px;
+max-width: 100%;
+height: 100%;
+background-color: #CCE5FF;
+float: left;
+margin:20px 10px 10px 0px;
+text-align: center;
+font-family:Microsoft JhengHei;
+}
+@media only screen and (max-width: 500px) {
+.card{
+
+width: 100%;
+
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.square{
+
+width: 80px;
+height: 80px;
+background-color: red;
+max-width: 100%;
+float: left;
+margin:0px 30px 0px 0px;
+
+}
+
+#ifsquare{
+
+width: 80px;
+height: 80px;
+background-color: red;
+max-width: 100%;
+float: left;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#name {
+	width: 50px;
+	height:50px;
+	border-radius: 50%;
+    background-color:red;
+    position: absolute;
+    float: left;
+    z-index: 99;
+}
+#names {
+	width: 50px;
+	height:50px;
+	border-radius: 50%;
+    background-color:red;
+    position: absolute;
+    float: left;
+    z-index: 99;
+}
+#namess {
+	width: 50px;
+	height:50px;
+	border-radius: 50%;
+    background-color:red;
+    position: absolute;
+    float: left;
+    z-index: 99;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#graphic {
+	width: 50px;
+	height:50px;
+	border-radius: 0%;
+    background-color:red;
+    position: absolute;
+    right: 30%;
+    float: left;
+    z-index: 99;
+}
+ .lock-back{
+        height: 100%;
+        overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.photo{
+
+width: 100%;
+height: 400px;
+background-color: red;
+float: left;
+margin-top: -20px;
+}
+
+
+#lifebuoy{
+	width: 30px;
+	height:35px;
+	border-radius: 0%;
+    position: absolute;
+    right: 34%;
+    top:46%;
+    float: left;
+    z-index: 99;
+
+
+}
+ .lock-back{
+        height: 100%;
+        overflow: hidden;
+}
+
+
+
+</style>
+<body style="font-family:Microsoft JhengHei;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" id="numberone" style="">
+
+<div class="alert alert-primary" role="alert">
+ <h3 style="text-align: center;"><b>題目:哪裡有<a onclick="check(this)" id="4">皮卡丘</a>?</b></h3>
+ <p  style="text-align: center;"><b>提示:認真的看</b></p>
+</div>
+
+<div class="card" onclick="check(this)" id="1"><img src="/image/game/1.jpeg" style="width: 100%;height:360px;padding: 20px;"></div>
+<div class="card" onclick="check(this)" id="2"><img src="/image/game/2.jpg"  style="width: 100%;height:360px;padding: 20px;"></div>
+<div class="card" onclick="check(this)" id="3"><img src="/image/game/3.png"  style="width: 100%;height:360px;padding: 20px;"></div>
+
+
+<div class="alert alert-primary" role="alert" style="float: left;width: 100%;">
+ 腦殘遊戲 | 2018©Lue_Zero
+</div>
+<script type="text/javascript">
+	
+function check(obj) {
+	
+
+	if(obj.id == 1 ){
+
+
+		$("#"+obj.id).css("background-color","red");
+		$("#"+obj.id).animate({top:-8}, 210).animate({top:20}, 180)
+        .animate({top:-4}, 150).animate({top:0}, 130)//是Chaining
+
+		alert("答錯:你覺得像嗎?");
+
+	} else if( obj.id == 2 ){
+
+		$("#"+obj.id).css("background-color","red");
+		$("#"+obj.id).animate({top:-8}, 210).animate({top:20}, 180)
+        .animate({top:-4}, 150).animate({top:0}, 130)//是Chaining
+		alert("答錯:這是皮丘!!");
+
+	} else if( obj.id == 3 ){
+
+		$("#"+obj.id).css("background-color","red");
+		$("#"+obj.id).animate({top:-8}, 210).animate({top:20}, 180)
+        .animate({top:-4}, 150).animate({top:0}, 130)//是Chaining
+	    alert("答錯:這是雷丘!!");
+
+	} else if( obj.id == 4 ){
+
+		 $("#"+obj.id).css("color","red");
+		 alert("答對:頭腦不錯嗎哈哈");
+		 $("#numberone").hide(2000);
+		 $("#numbertwo").slideDown("slow");
+		 
+
+
+	}
+
+}
+
+</script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" id="numbertwo" style="display: none">
+
+
+<div class="alert alert-primary" role="alert">
+ <h3 style="text-align: center;"><b>題目:請問有幾個正方形</b></h3>
+ <p  style="text-align: center;"><b>提示:不要侷限在你看到的，眼前看到的一定是騙人的</b></p>
+</div>
+
+
+
+<div class="square" ontouchmove="move(event)" ></div>
+<div class="square"></div>
+<div class="square"></div>
+
+<br><br><br><br><br>
+<input type="text" class="form-control" placeholder="輸入數字完後點螢幕即可" id="TextValue1">
+<br>
+<div class="square"></div>
+<div class="square"></div>
+<div id="ifsquare"></div>
+<br><br><br><br>
+
+
+
+
+
+<div class="alert alert-primary" role="alert" style="float: left;width: 100%;" >
+ 腦殘遊戲 | 2018©Lue_Zero
+</div>
+<script type="text/javascript">
+	
+function move(){
+
+	$("#ifsquare").animate({height:"10px"});
+
+}
+
+  $('#TextValue1').on('change', function() {
+    
+  	if( $("#TextValue1").val() == "5"){
+  		  alert("答對:你是天才!");
+  		 $("#numbertwo").hide(2000);
+  		 $("#numberthree").slideDown("slow");
+  		
+  		 return false;
+
+  	}else{
+
+  		 alert("答錯:不要相信你看到的!");
+
+
+  	}
+  		
+
+  	
+
+  });
+  	
+
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" id="numberthree" style="display: none;">
+<div class="alert alert-primary" role="alert">
+ <h3 style="text-align: center;"><b>題目:請問有多少個<a style="color:red">●</a></b></h3>
+ <p  style="text-align: center;"><b>提示:動一動，看一看</b></p>
+</div>
+
+
+
+<div style="width: 100%;height: 300px ;padding: 50px">
+<div id="name"></div>
+<div id="names"></div> 
+<div id="namess"></div> 
+<div style="width: 50px;
+	height:50px;
+	border-radius: 50%;
+    background-color:red;
+    position: relative;
+    left: 150px;
+    top:150px;">
+</div>
+<div style="width: 50px;
+	height:50px;
+	border-radius: 50%;
+    background-color:red;
+    position: relative;
+    left: 200px;
+    top:10px;">	
+</div>
+
+
+</div>
+
+<input type="text" class="form-control" placeholder="輸入數字完後點螢幕即可" id="TextValue2">
+<div class="alert alert-primary" role="alert" style="float: left;width: 100%;">
+ 腦殘遊戲 | 2018©Lue_Zero
+</div>
+<script type="text/javascript">
+
+
+
+
+$('#name').bind('touchmove',function(e){
+
+           //e.originalEvent是jQuery的事件
+            console.log(e.originalEvent.touches);
+
+                  if(e.originalEvent.touches.length ==1){
+
+
+                         var touch = e.originalEvent.touches[0];
+                         $(this).css({
+
+
+                             "left":touch.pageX+'px'
+               
+                             //"top":touch.pageY+'px'
+
+
+                         })
+
+
+                  }
+});
+
+$('#names').bind('touchmove',function(e){
+
+
+           //e.originalEvent是jQuery的事件
+            console.log(e.originalEvent.touches);
+
+
+                  if(e.originalEvent.touches.length ==1){
+
+
+                         var touch = e.originalEvent.touches[0];
+
+
+                         $(this).css({
+
+                             "left":touch.pageX+'px',
+                             "top":touch.pageY+'px'
+
+
+                         })
+
+
+
+
+                  }
+});
+ $('#namess').bind('touchmove',function(e){
+
+
+
+
+           //e.originalEvent是jQuery的事件
+            console.log(e.originalEvent.touches);
+
+
+                  if(e.originalEvent.touches.length ==1){
+
+
+                         var touch = e.originalEvent.touches[0];
+
+
+                         $(this).css({
+
+                             "left":touch.pageX+'px',
+                             "top":touch.pageY+'px'
+
+
+                         })
+                  }
+
+
+
+});
+
+
+
+
+$('#TextValue2').on('change', function() {
+    
+  	if( $("#TextValue2").val() == "6"){
+  		 alert("答對:靠，你到底是誰");
+  		 $("#numberthree").hide(2000);
+  		 $("#numberfore").slideDown("slow");
+  		
+  		 return false;
+
+  	}else{
+
+  		
+  		 alert("答錯:加油你可以的，看提示");
+
+
+	}
+
+});
+
+
+
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container active" id="numberfore" style="display: none;">
+<div class="alert alert-primary" role="alert">
+ <h4 style="text-align: center;color:#DDD;background-color: red;"><b>題目:請移動紅色方塊到灰色</b></h4>
+ <p  style="text-align: center;"><b>提示:你懂我的哈哈</b></p>
+</div>
+
+<div style="width: 100%;padding: 50px;   overflow: hidden;
+    height: 100%;">
+<div id="graphic"></div>
+<div style="width: 50px;height: 50px;background: #ddd;"></div>
+</div>
+
+<p></p>
+<a></a>
+<div class="alert alert-primary" role="alert" style="float: left;width: 100%;" >
+ 腦殘遊戲 | 2018©Lue_Zero
+</div>
+<script type="text/javascript">
+
+
+
+
+$('#graphic').bind('touchmove',function(e){
+
+
+
+           //e.originalEvent是jQuery的事件
+            console.log(e.originalEvent.touches);
+
+                  if(e.originalEvent.touches.length == 1 ){
+
+
+                         var touch = e.originalEvent.touches[0];
+                         e.preventDefault();
+						 e.stopPropagation();
+ 						 //$("p").text(touch.pageX);	
+ 						 //$("a").text(touch.pageY);	
+                         $(this).css({
+
+                             "left":touch.pageX+'px',
+                             "top":touch.pageY+'px',
+
+                         })
+
+                   
+
+
+          			  }
+
+
+
+          			     if (touch.pageX <= 307 && touch.pageY <= 30 ){
+
+                         	 alert("答對:你的腦已經進化了哈哈");
+                         	 $("#numberfore").hide(2000);
+  		 				     $("#numberfive").slideDown("slow");
+                         	 return false;
+                         }
+
+
+                         	return;
+
+
+                         
+});
+
+
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" id="numberfive" style="display: none;">
+<div class="alert alert-primary" role="alert">
+<h4 style="text-align: center;"><b>題目:請問要如何救這位溺水人員</b></h4>
+<p  style="text-align: center;"><b>提示:<div ><img src="/image/life.png" style="width: 40px" id="lifebuoy" class="lifebuoy"></div></b></p>
+</div>
+
+<div class="photo">
+	
+<img src="/image/2.gif" style="width: 100%;height: 100%;z-index:0;  position: relative; left: 0px; " class="img_aaa">
+
+</div>
+
+
+
+<p></p>
+<a href=""></a>
+<div class="alert alert-primary" role="alert" style="width:100%;float: left;" >
+腦殘遊戲 | 2018©Lue_Zero
+</div>
+<script>
+
+
+
+$('#lifebuoy').bind('touchmove',function(e){
+
+
+
+
+           //e.originalEvent是jQuery的事件
+            console.log(e.originalEvent.touches);
+
+                  if(e.originalEvent.touches.length ==1){
+
+
+                         var touch = e.originalEvent.touches[0];
+                         e.preventDefault();
+						 e.stopPropagation();
+ 						 //$("p").text(touch.pageX);	
+ 						 //$("a").text(touch.pageY);	
+                         $(this).css({
+
+                             "left":touch.pageX+'px',
+                             "top":touch.pageY+'px',
+
+                         })
+
+
+
+                         if ( touch.pageX >= 170 && touch.pageY >= 260){
+
+                         	 alert("答對:哈哈哈，你已經有達到腦殘地步了");
+              				
+                      	     $(".img_aaa").attr( "src","/image/3.gif"); 	
+                         	 $("#numberfive").hide(4000);
+  		 				     $("#numbersix").slideDown("slow");
+                         	 return false;
+                         }
+
+
+                         return false;
+           	      }
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" id="numbersix" style="display: none">
+<div class="alert alert-primary" role="alert">
+<h2 style="text-align: center;"><b>恭喜你 完成遊戲<i class="em em-facepunch"></i></b></h2>
+<p  style="text-align: center;"><b></b></p>
+</div>
+
+<div class="alert alert-primary" role="alert" style="width:100%;float: left;" >
+腦殘遊戲 | 2018©Lue_Zero
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
